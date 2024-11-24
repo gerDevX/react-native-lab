@@ -1,4 +1,5 @@
 import Feather from '@expo/vector-icons/Feather';
+import dayjs from 'dayjs';
 import { View, Text, Image } from 'react-native';
 
 interface EventData {
@@ -13,12 +14,13 @@ interface EventData {
 export default function EventListItem({ data }: { data: EventData }) {
   return (
     <>
-      <View className="gap-3 p-3">
+      <View className="m-3 gap-3 border-b border-gray-100 pb-3">
         <View className="flex-row">
           <View className="flex-1">
-            <Text className="text-lg font-semibold uppercase text-amber-700 ">{data.datetime}</Text>
-            {/* <Text style={{ fontSize: 30, fontWeight: 'bold' }}>Este es el titulo</Text> */}
-            <Text className="text-3xl font-bold" numberOfLines={2}>
+            <Text className="text-lg font-semibold uppercase text-amber-700 ">
+              {dayjs(data.datetime).format('ddd, D MMM')} • {dayjs(data.datetime).format('h:mm A')}
+            </Text>
+            <Text className="text-2xl font-bold" numberOfLines={2}>
               {data.title}
             </Text>
             <Text className="text-gray-700">{data.location}</Text>
@@ -30,7 +32,7 @@ export default function EventListItem({ data }: { data: EventData }) {
           <Text className="mr-auto text-gray-700">16 going</Text>
 
           <Feather name="share" size={20} color="gray" />
-          <Feather name="bookmark" size={24} color="gray" />
+          <Feather name="bookmark" size={20} color="gray" />
         </View>
       </View>
     </>
