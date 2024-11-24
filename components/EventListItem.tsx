@@ -26,7 +26,6 @@ export default function EventListItem({ data }: { data: EventData }) {
               <Text className="text-2xl font-bold" numberOfLines={2}>
                 {data.title}
               </Text>
-
               <Text className="text-gray-700">{data.location}</Text>
             </View>
             <Image source={{ uri: data.image }} className="aspect-video w-2/5 rounded-xl" />
